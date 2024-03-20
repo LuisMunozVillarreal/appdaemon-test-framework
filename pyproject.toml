@@ -14,7 +14,7 @@ python = "^3.10"
 appdaemon = { git = "https://github.com/LuisMunozVillarreal/appdaemon.git", rev = "364ce8f078667520fec77b99e27f22a5ee6459a9" }
 
 [tool.poetry.group.dev.dependencies]
-black = "23.12.1"
+black = "24.3.0"
 flake8 = "7.0.0"
 flake8-isort = "6.1.1"
 ipython = "8.20.0"

@@ -72,6 +72,16 @@ class GivenThatWrapper:
             get_state_mock
         )
 
+        def turn_on_mock(entity_id, **attributes):
+            self.mocked_states[entity_id] = {
+                "main": "on",
+                "attributes": attributes,
+                "last_updated": None,
+                "last_changed": None,
+            }
+
+        self._hass_mocks.hass_functions["turn_on"].side_effect = turn_on_mock
+
         def entity_exists_mock(entity_id):
             return entity_id in self.mocked_states
 

@@ -246,7 +246,6 @@ class Test_scheduling_and_dispatch:
         time_when_called = []
 
         def callback(kwargs):
-            nonlocal time_when_called
             time_when_called.append(scheduler.get_now_sync())
 
         now = await scheduler.get_now()

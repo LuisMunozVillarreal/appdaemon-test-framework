@@ -10,25 +10,25 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-appdaemon = { git = "https://github.com/LuisMunozVillarreal/appdaemon.git", rev = "02dfb695488c05a3a901204ac9ce0de63cf589b8" }
+python = "~3.11"
+appdaemon = { git = "https://github.com/LuisMunozVillarreal/appdaemon.git", rev = "3cd24f5ca232b4572e7d06f3af0d653906480948" }
 
 [tool.poetry.group.dev.dependencies]
-black = "24.4.2"
-flake8 = "7.1.0"
-flake8-isort = "6.1.1"
-ipython = "8.25.0"
-ipdb = "0.13.13"
-mypy = "1.10.0"
-pydocstyle = "6.3.0"
-pylint = "3.2.3"
-pytest = "8.2.2"
-pytest-asyncio = "0.23.7"
-pytest-cov = "5.0.0"
-pytest-mock = "3.14.0"
-pytest-xdist = "3.6.1"
-tox = "4.15.1"
-types-pytz = "2024.1.0.20240417"
+black = "^24.10.0"
+flake8 = "^7.2.0"
+flake8-isort = "^6.1.2"
+ipython = "^8.35.0"
+ipdb = "^0.13.13"
+mypy = "^1.15.0"
+pydocstyle = "^6.3.0"
+pylint = "^3.3.6"
+pytest = "^8.3.5"
+pytest-asyncio = "^0.23.8"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
+pytest-xdist = "^3.6.1"
+tox = "^4.25.0"
+types-pytz = "^2024.2.0.20241221"
 
 [tool.black]
 line-length = 79

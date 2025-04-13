@@ -113,7 +113,6 @@ class Test_callback_execution:
         time_when_called = []
 
         def callback(kwargs):
-            nonlocal time_when_called
             time_when_called.append(automation.datetime())
 
         automation.run_in(callback, 1)

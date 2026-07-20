@@ -311,7 +311,7 @@ NOT_INIT_ERROR = textwrap.dedent(
 def _ensure_init(
     property: Union[
         RegisteredWrapper, WasWrapper, WasNotWrapper, ListensToWrapper
-    ]
+    ],
 ) -> Union[RegisteredWrapper, WasWrapper, WasNotWrapper, ListensToWrapper]:
     if property is None:
         raise Exception(NOT_INIT_ERROR)

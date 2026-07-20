@@ -4,6 +4,7 @@ from pytest import mark
 
 
 @mark.using_pytester
+@mark.usefixtures("configure_appdaemontestframework_for_pytester")
 class TestLearningTest:
     def test_logging_failure(self, testdir):
         testdir.makepyfile(

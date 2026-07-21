@@ -28,7 +28,7 @@ commands:
             - pip-<<parameters.pip-version>>-poetry-<<parameters.poetry-version>>-v10
       - run:
           name: Install Pip
-          command: apk add --update py-pip
+          command: apk add --update --upgrade py-pip python3
       - run:
           name: Install Poetry
           command: pip install --user poetry==<<parameters.poetry-version>>

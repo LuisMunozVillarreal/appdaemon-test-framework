@@ -14,21 +14,21 @@ python = "~3.11"
 appdaemon = { git = "https://github.com/LuisMunozVillarreal/appdaemon.git", rev = "3cd24f5ca232b4572e7d06f3af0d653906480948" }
 
 [tool.poetry.group.dev.dependencies]
-black = "^25.9.0"
+black = ">=25.9,<27.0"
 flake8 = "^7.3.0"
 flake8-isort = "^7.0.0"
 ipython = "^9.6.0"
 ipdb = "^0.13.13"
-mypy = "^1.18.2"
+mypy = ">=1.18.2,<3.0.0"
 pydocstyle = "^6.3.0"
 pylint = "^4.0.2"
 pytest = "^8.4.2"
-pytest-asyncio = "~1.2.0"
+pytest-asyncio = ">=1.2,<1.5"
 pytest-cov = "^7.0.0"
 pytest-mock = "^3.15.1"
 pytest-xdist = "^3.8.0"
 tox = "^4.32.0"
-types-pytz = "^2025.2.0.20250809"
+types-pytz = ">=2025.2.0.20250809,<2027.0.0.0"
 
 [tool.black]
 line-length = 79

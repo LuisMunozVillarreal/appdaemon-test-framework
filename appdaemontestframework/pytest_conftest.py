@@ -35,16 +35,12 @@ class DeprecatedDict(dict):
     """Deprecation warning when accessing any of it's members."""
 
     def __getitem__(self, key):
-        message = textwrap.dedent(
-            """
+        message = textwrap.dedent("""
             Usage of the `hass_functions` test fixture is deprecated.
             Replace `hass_functions` with the `hass_mocks` test fixture and
             access the `hass_functions` property.
             hass_functions['{0}'] ==becomes==> hass_mocks.hass_functions['{0}']
-            """.format(
-                key
-            )
-        )
+            """.format(key))
         warnings.warn(message, DeprecationWarning, stacklevel=2)
         return super().__getitem__(key)
 

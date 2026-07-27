@@ -33,8 +33,7 @@ def expected_error_regex_was_found_in_stdout_lines(
 @mark.usefixtures("configure_appdaemontestframework_for_pytester")
 class TestAutomationFixture:
     def test_fixture_is_available_for_injection(self, testdir):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             from appdaemon.plugins.hass.hassapi import Hass
             from appdaemontestframework import automation_fixture
 
@@ -48,15 +47,13 @@ class TestAutomationFixture:
 
             def test_is_injected_as_fixture(mock_automation):
                 assert mock_automation is not None
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(passed=1)
 
     def test_automation_was_initialized(self, testdir):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             from appdaemon.plugins.hass.hassapi import Hass
             from appdaemontestframework import automation_fixture
 
@@ -73,8 +70,7 @@ class TestAutomationFixture:
 
             def test_was_initialized(mock_automation):
                 assert mock_automation.was_initialized
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(passed=1)
@@ -84,8 +80,7 @@ class TestAutomationFixture:
         testdir,
     ):
         """calls to AD during initialize are cleared before entering test."""
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             from appdaemon.plugins.hass.hassapi import Hass
             from appdaemontestframework import automation_fixture
 
@@ -101,15 +96,13 @@ class TestAutomationFixture:
             def test_some_test(mock_automation):
                 assert mock_automation is not None
 
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(passed=1)
 
     def test_multiple_automations(self, testdir):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             from appdaemon.plugins.hass.hassapi import Hass
             from appdaemontestframework import automation_fixture
 
@@ -129,8 +122,7 @@ class TestAutomationFixture:
 
             def test_some_test(mock_automation):
                 assert mock_automation is not None
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(passed=2)
@@ -138,8 +130,7 @@ class TestAutomationFixture:
     def test_given_that_fixture_is_injectable_in_automation_fixture(
         self, testdir
     ):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             from appdaemon.plugins.hass.hassapi import Hass
             from appdaemontestframework import automation_fixture
 
@@ -157,15 +148,13 @@ class TestAutomationFixture:
 
             def test_some_test(mock_automation):
                 mock_automation.assert_light_on()
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(passed=1)
 
     def test_decorator_called_without_automation__raise_error(self, testdir):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             from appdaemon.plugins.hass.hassapi import Hass
             from appdaemontestframework import automation_fixture
 
@@ -179,8 +168,7 @@ class TestAutomationFixture:
 
             def test_some_test(mock_automation):
                 assert mock_automation is not None
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(errors=1)
@@ -191,8 +179,7 @@ class TestAutomationFixture:
     def test_name_attribute_of_hass_object_set_to_automation_class_name(
         self, testdir
     ):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
         from appdaemon.plugins.hass.hassapi import Hass
         from appdaemontestframework import automation_fixture
 
@@ -208,8 +195,7 @@ class TestAutomationFixture:
             mock_automation
         ):
            assert mock_automation.name == 'MockAutomation'
-        """
-        )
+        """)
 
         result = testdir.runpytest()
         result.assert_outcomes(passed=1)
@@ -219,9 +205,7 @@ class TestAutomationFixture:
         def assert_automation_class_fails(self, testdir):
             def wrapper(automation_class_src, expected_error_regex):
                 # Given: Test file with given automation class
-                testdir.makepyfile(
-                    dedent(
-                        """
+                testdir.makepyfile(dedent("""
                     from appdaemon.plugins.hass.hassapi import Hass
                     from appdaemontestframework import automation_fixture
 
@@ -233,10 +217,7 @@ class TestAutomationFixture:
 
                     def test_some_test(mock_automation):
                         assert mock_automation is not None
-                """
-                    )
-                    % dedent(automation_class_src)
-                )
+                """) % dedent(automation_class_src))
 
                 # When: Running 'pytest'
                 result = testdir.runpytest()
@@ -336,8 +317,7 @@ class TestAutomationFixture:
 
     class TestWithArgs:
         def test_automation_is_injected_with_args(self, testdir):
-            testdir.makepyfile(
-                """
+            testdir.makepyfile("""
                 from appdaemon.plugins.hass.hassapi import Hass
                 from appdaemontestframework import automation_fixture
 
@@ -358,15 +338,13 @@ class TestAutomationFixture:
 
                     assert isinstance(automation, MockAutomation)
                     assert arg == "some_arg"
-            """
-            )
+            """)
 
             result = testdir.runpytest()
             result.assert_outcomes(passed=1)
 
         def test_multiple_automation_are_injected_with_args(self, testdir):
-            testdir.makepyfile(
-                """
+            testdir.makepyfile("""
                 from appdaemon.plugins.hass.hassapi import Hass
                 from appdaemontestframework import automation_fixture
 
@@ -396,8 +374,7 @@ class TestAutomationFixture:
                     assert isinstance(automation, MockAutomation) \
                          or isinstance(automation, OtherAutomation)
                     assert arg == "some_arg" or arg == "other_arg"
-            """
-            )
+            """)
 
             result = testdir.runpytest()
             result.assert_outcomes(passed=2)

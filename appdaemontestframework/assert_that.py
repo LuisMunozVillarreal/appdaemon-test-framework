@@ -298,14 +298,12 @@ class RegisteredWrapper:
         return WithCallbackWrapper()
 
 
-NOT_INIT_ERROR = textwrap.dedent(
-    """\
+NOT_INIT_ERROR = textwrap.dedent("""\
         AssertThat has not been initialized!
 
         Call `assert_that(THING_TO_CHECK).was.ASSERTION`
         And NOT `assert_that.was.ASSERTION`
-        """
-)
+        """)
 
 
 def _ensure_init(

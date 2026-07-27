@@ -6,14 +6,12 @@ from appdaemontestframework.hass_mocks import HassMocks
 
 class StateNotSetError(AppdaemonTestFrameworkError):
     def __init__(self, entity_id: str) -> None:
-        super().__init__(
-            f"""
+        super().__init__(f"""
             State for entity: '{entity_id}' was never set!
             Please make sure to set the state with
             `given_that.state_of({entity_id}).is_set_to(STATE)`
             before trying to access the mocked state
-            """
-        )
+            """)
 
 
 class AttributeNotSetError(AppdaemonTestFrameworkError):

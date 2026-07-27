@@ -6,14 +6,10 @@ def configure_appdaemontestframework_for_pytester(testdir):
     """
     Extra test fixtue use for testing pytest runners.
     """
-    testdir.makeini(
-        """
+    testdir.makeini("""
         [pytest]
         asyncio_default_fixture_loop_scope = function
-    """
-    )
-    testdir.makeconftest(
-        """
+    """)
+    testdir.makeconftest("""
         from appdaemontestframework.pytest_conftest import *
-    """
-    )
+    """)

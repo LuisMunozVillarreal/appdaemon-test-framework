@@ -7,38 +7,32 @@ from pytest import mark
 @mark.usefixtures("configure_appdaemontestframework_for_pytester")
 class TestLearningTest:
     def test_logging_failure(self, testdir):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             import logging
 
             def test_log_failure(caplog):
                 caplog.set_level(logging.INFO)
                 logging.info("logging failure")
                 assert 1 == 2
-            """
-        )
+            """)
         result = testdir.runpytest()
         result.stdout.re_match_lines_random(r".*logging failure.*")
 
     def test_not_logging_success(self, testdir):
-        testdir.makepyfile(
-            """
+        testdir.makepyfile("""
             import logging
 
             def test_log_success(caplog):
                 caplog.set_level(logging.INFO)
                 logging.info("logging success")
                 assert 1 == 1
-            """
-        )
+            """)
         result = testdir.runpytest()
         "logging success" not in result.stdout.lines
 
 
 def inject_mock_automation_and_run_test(testdir, test_src):
-    testdir.makepyfile(
-        dedent(
-            """
+    testdir.makepyfile(dedent("""
         from appdaemon.plugins.hass.hassapi import Hass
         from appdaemontestframework import automation_fixture
 
@@ -64,10 +58,7 @@ def inject_mock_automation_and_run_test(testdir, test_src):
 
         %s
 
-    """
-        )
-        % dedent(test_src)
-    )
+    """) % dedent(test_src))
 
     return testdir.runpytest()
 

@@ -41,8 +41,8 @@ def test_canceled_timer_does_not_run_callback(time_travel, automation):
 
 
 class Test_fast_forward:
-    @staticmethod
     @pytest.fixture
+    @staticmethod
     def automation_at_noon(automation, time_travel, given_that):
         given_that.time_is(datetime.datetime(2020, 1, 1, 12, 0))
         return automation
